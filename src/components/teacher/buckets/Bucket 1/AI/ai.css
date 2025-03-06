@@ -1,0 +1,127 @@
+.bt-container {
+    width: 75%;
+    height: 75%;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    overflow: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f4f4f4;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.label1 {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+    width: 100%;
+}
+
+.select-input {
+    width: 40%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 3px;
+    font-size: 16px;
+}
+
+
+.submit-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 10%;
+    margin: 0 auto;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+.linkinput {
+    position: relative;
+    left: 20px;
+    width: 70%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 3px;
+    font-size: 16px;
+}
+
+.bt-container h2 {
+    color: white;
+    background-color: #537c78;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.vertical-compartment-box {
+    display: flex;
+    /* Use flexbox to arrange compartments horizontally */
+    width: 100%;
+    /* Full width */
+    height: 40px;
+    /* Adjust height as needed */
+    border: 2px solid #000;
+    /* Border around the box */
+    margin-top: 25px;
+}
+
+.compartment {
+    border-right: 1px solid #000;
+    /* Vertical lines between compartments */
+    display: flex;
+    /* Use flexbox for compartment content */
+    align-items: center;
+    /* Center content vertically */
+    justify-content: center;
+    /* Center content horizontally */
+    font-size: 18px;
+    /* Font size */
+}
+
+/* Remove the right border from the last compartment */
+.compartment:last-child {
+    border-right: none;
+}
+
+.compartment:nth-child(2) {
+    background-color: #c0c262;
+    /* Change the background color */
+}
+
+.compartment:nth-child(4) {
+    background-color: #c0c262;
+    /* Change the background color */
+}
+
+.compartment:nth-child(6) {
+    background-color: #c0c262;
+    /* Change the background color */
+}
+
+.compartment:nth-child(8) {
+    background-color: #c0c262;
+    /* Change the background color */
+}
