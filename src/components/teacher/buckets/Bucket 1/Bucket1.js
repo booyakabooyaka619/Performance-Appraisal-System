@@ -1,64 +1,130 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Import useNavigate
-
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Navbar from '../../Navbar';
 
 export default function Bucket1() {
-    return (
-        <div className="y-container">
-            <ul className="list-group">
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai1" style={{ textDecoration: 'none', color: 'black' }}>AI 1</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai2" style={{ textDecoration: 'none', color: 'black' }}>AI 2</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai31" style={{ textDecoration: 'none', color: 'black' }}>AI 3.1</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai32" style={{ textDecoration: 'none', color: 'black' }}>AI 3.2</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai33" style={{ textDecoration: 'none', color: 'black' }}>AI 3.3</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai34" style={{ textDecoration: 'none', color: 'black' }}>AI 3.4</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai4" style={{ textDecoration: 'none', color: 'black' }}>AI 4</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai5" style={{ textDecoration: 'none', color: 'black' }}>AI 5</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai6" style={{ textDecoration: 'none', color: 'black' }}>AI 6</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai7" style={{ textDecoration: 'none', color: 'black' }}>AI 7</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai8" style={{ textDecoration: 'none', color: 'black' }}>AI 8</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai9" style={{ textDecoration: 'none', color: 'black' }}>AI 9</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai10" style={{ textDecoration: 'none', color: 'black' }}>AI 10</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai11" style={{ textDecoration: 'none', color: 'black' }}>AI 11</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai12" style={{ textDecoration: 'none', color: 'black' }}>AI 12</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai13" style={{ textDecoration: 'none', color: 'black' }}>AI 13</Link>
-                </li>
-                <li className="list-group-item">
-                    <Link to="/buckets/Bucket 1/AI/Ai14" style={{ textDecoration: 'none', color: 'black' }}>AI 14</Link>
-                </li>
-            </ul>
+    const location = useLocation();
+    const navigate = useNavigate();
 
+    // Extract the active path from the current location
+    const [activeButton, setActiveButton] = useState(location.pathname);
+
+    const handleButtonClick = (path) => {
+        setActiveButton(path);
+        navigate(path, { replace: true });
+        // window.location.reload(); 
+    };
+
+
+    return (
+        <div>
+            <Navbar />
+            <div className="y-container">
+                <ul className="list-group">
+                    <button
+                        className={`butt ${activeButton === "/AI/AI1" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI1")}
+                    >
+                        AI 1
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI2" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI2")}
+                    >
+                        AI 2
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI31" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI31")}
+                    >
+                        AI 3.1
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI32" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI32")}
+                    >
+                        AI 3.2
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI33" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI33")}
+                    >
+                        AI 3.3
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI34" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI34")}
+                    >
+                        AI 3.4
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI4" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI4")}
+                    >
+                        AI 4
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI5" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI5")}
+                    >
+                        AI 5
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI6" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI6")}
+                    >
+                        AI 6
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI7" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI7")}
+                    >
+                        AI 7
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI8" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI8")}
+                    >
+                        AI 8
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI9" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI9")}
+                    >
+                        AI 9
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI10" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI10")}
+                    >
+                        AI 10
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI11" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI11")}
+                    >
+                        AI 11
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI12" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI12")}
+                    >
+                        AI 12
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI13" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI13")}
+                    >
+                        AI 13
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/AI/AI14" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/AI/AI14")}
+                    >
+                        AI 14
+                    </button>
+                </ul>
+            </div>
         </div>
     );
 }

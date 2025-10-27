@@ -1,43 +1,98 @@
 .faculty-container {
+    width: 100%;
+    margin: auto;
+    font-family: Tahoma;
+    background-color: #f9f9fc;
+}
+
+.faculty-subcontainer {
     width: 90%;
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
+    margin: auto;
+    margin-top: 3%;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 h1,
 h2 {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    color: #2c3e50;
 }
 
 .faculty-details {
-    background-color: yellow;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #000;
+    background-color: #faedc2;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border-left: 5px solid #f7c948;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 16px;
+    color: #333;
 }
 
 .faculty-details div {
-    margin: 5px 0;
+    margin: 6px 0;
 }
 
 select {
-    padding: 5px;
+    padding: 7px 12px;
     margin-left: 10px;
-    font-size: 14px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fefefe;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: border 0.2s ease;
+}
+
+select:focus {
+    border-color: #007bff;
+    outline: none;
 }
 
 .score-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 25px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .score-table th,
 .score-table td {
-    border: 1px solid black;
-    padding: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 12px;
     text-align: center;
+    font-size: 15px;
+}
+
+.score-table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+}
+
+.score-table td {
+    background-color: #ffffff;
+}
+
+.score-table tbody tr:nth-child(even) td {
+    background-color: #e1f0ff;
+}
+
+.score-table tbody tr:hover td {
+    background-color: #ffffec;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.score-table th[colspan="5"],
+.score-table th[colspan="2"] {
+    background-color: #0056b3;
 }
 
 .narrow-col {
@@ -52,41 +107,54 @@ select {
     width: 15%;
 }
 
-.score-table th {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.score-table th[colspan="5"],
-.score-table th[colspan="2"] {
-    background-color: #2196F3;
-}
-
 .logout-button {
     position: relative;
     border: none;
-    background-color: aquamarine;
-    width: 40px;
-    height: 22%;
-    left: 97%;
-    bottom: 100px;
-    font-size: 17px;
-    border-radius: 10px;
+    background-color: #ff6b6b;
+    color: white;
+    font-weight: 600;
+    width: 120px;
+    padding: 8px 0;
+    font-size: 15px;
+    border-radius: 8px;
+    right: -87%;
+    margin-top: -50px;
+    transition: background-color 0.3s ease;
 }
 
-.proceed-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #007bff;
-    /* Primary color */
-    border: none;
-    border-radius: 5px;
+.logout-button:hover {
+    background-color: #e44c4c;
     cursor: pointer;
 }
 
+.proceed-button {
+    margin-top: 30px;
+    padding: 12px 24px;
+    font-size: 16px;
+    color: white;
+    background-color: #28a745;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease-in-out;
+}
+
 .proceed-button:hover {
-    background-color: #0056b3;
-    /* Darker shade for hover */
+    background-color: #218838;
+}
+
+.visualize-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #4b7bec;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.visualize-button:hover {
+    background-color: #3867d6;
 }

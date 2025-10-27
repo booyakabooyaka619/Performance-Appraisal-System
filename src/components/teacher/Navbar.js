@@ -1,87 +1,176 @@
-import React, { useState } from 'react';
-import vidyalogo from './vidyalogo.jpg';
+import React, { useState, useEffect } from "react";
+import vidyalogo2 from '../vidyalogo2.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faBars, faHome, faUser, faBell } from '@fortawesome/free-solid-svg-icons'; // Added Home and User icons
 
 export default function Navbar({ user, onLogout }) {
-    const [showModal, setShowModal] = useState(false); // State to control modal visibility
+    const [currentUser, setCurrentUser] = useState(user);
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
+    const [notificationCount, setNotificationCount] = useState(0);
+    const [showAbout, setShowAbout] = useState(false);
+
+
     const navigate = useNavigate();
 
-    // Toggle modal visibility
-    const toggleModal = () => {
-        setShowModal(!showModal);
+    useEffect(() => {
+        const fetchTeacherNotificationCount = async (empCode) => {
+            try {
+                const response = await fetch(`http://localhost:5000/api/teacher-alerts/count?employeeCode=${empCode}`);
+                const data = await response.json();
+                setNotificationCount(data.count);
+            } catch (error) {
+                console.error("Error fetching teacher notification count:", error);
+            }
+        };
+
+        const storedUser = user || JSON.parse(localStorage.getItem("user"));
+        if (storedUser?.employeeCode) {
+            setCurrentUser(storedUser);
+            fetchTeacherNotificationCount(storedUser.employeeCode);
+        }
+
+        const interval = setInterval(() => {
+            const storedUser = user || JSON.parse(localStorage.getItem("user"));
+            if (storedUser?.employeeCode) {
+                fetchTeacherNotificationCount(storedUser.employeeCode);
+            }
+        }, 10000);
+
+        return () => clearInterval(interval);
+    }, [user]);
+
+
+
+
+
+    useEffect(() => {
+        // Add event listener to close sidebar when clicked outside
+        const handleClickOutside = (event) => {
+            if (isSidebarOpen && !event.target.closest('.sidebar') && !event.target.closest('.profile-toggle-btn')) {
+                setSidebarOpen(false);
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [isSidebarOpen]);
+
+    const toggleSidebar = () => {
+        setSidebarOpen(!isSidebarOpen);
     };
 
-    // Logout function
     const handleLogout = () => {
-        onLogout(); // Perform logout action
-        navigate('/'); // Redirect to login page
+        localStorage.removeItem('user');
+        sessionStorage.removeItem('user');
+        navigate('/', { replace: true });
+        window.location.reload();
     };
 
     return (
         <div className="container">
-            <img src={vidyalogo} alt="Description" className="logo" />
+            <img src={vidyalogo2} alt="Description" className="logo" />
             <div className="x-container">
                 <div className="bucket-container">
-                    <button className="but" id="but1">
-                        <Link className='navlink' to="/buckets/Bucket 1/Bucket1">Academic Involvement</Link>
+                    <button className="but" id="but1" onClick={() => navigate("/AI/AI1")}>Academic Involvement</button>
+                    <button className="but" id="but2" onClick={() => navigate("/SD/SD1")}>Student Development</button>
+                    <button className="but" id="but3" onClick={() => navigate("/AB/AB1")}>Administrative</button>
+                    <button className="but" id="but4" onClick={() => navigate("/RB/RB1")}>Research</button>
+                    <button className="but" id="but5" onClick={() => navigate("/CB/CB1")}>Consultancy</button>
+                    <button className="but" id="but6" onClick={() => navigate("/PDB/PDB1")}>Product Development</button>
+
+                    {/* Hamburger icon to toggle sidebar */}
+                    <button className="profile-toggle-btn" onClick={toggleSidebar}>
+                        <FontAwesomeIcon icon={faBars} /> {/* Hamburger icon */}
                     </button>
-                    <button className="but" id="but2">
-                        <Link className='navlink' to="/buckets/Bucket 2/Bucket2">Student Development</Link>
-                    </button>
-                    <button className="but" id="but3">
-                        <Link className='navlink' to="/buckets/Bucket 3/Bucket3">Administrative</Link>
-                    </button>
-                    <button className="but" id="but4">
-                        <Link className='navlink' to="/buckets/Bucket 4/Bucket4">Research</Link>
-                    </button>
-                    <button className="but" id="but5">
-                        <Link className='navlink' to="/buckets/Bucket 5/Bucket5">Consultancy</Link>
-                    </button>
-                    <button className="but" id="but6">
-                        <Link className='navlink' to="/buckets/Bucket 6/Bucket6">Product Development</Link>
-                    </button>
-                    <div className="square" onClick={toggleModal}>
-                        {user && (
-                            <>
-                                <img
-                                    src={`data:image/jpeg;base64,${user.image}`}
-                                    alt={`${user.name}'s avatar`}
-                                    className="small-profile-image"
-                                />
-                                <p className="user-name">{user.name}</p>
-                            </>
-                        )}
-                    </div>
                 </div>
             </div>
 
-            {showModal && (
-                <div className="modal-backdrop" onClick={toggleModal}>
-                    <div className="profile-modal" onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-content">
-                            {user && (
-                                <>
-                                    <img
-                                        src={`data:image/jpeg;base64,${user.image}`}
-                                        alt={`${user.name}'s full profile`}
-                                        className="full-profile-image"
-                                    />
-                                    <h3>{user.name}</h3>
-                                    <p>Username: {user.username}</p>
-                                    <button className="about-btn" onClick={() => navigate('/about-me')}>
-                                        About Me
-                                    </button>
-                                    <button className="logout-btn" onClick={handleLogout}>
-                                        <FontAwesomeIcon icon={faSignOutAlt} /> Logout
-                                    </button>
-                                </>
-                            )}
+            {/* Sidebar */}
+            <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+                <div className="sidebar-content">
+                    {currentUser && (
+                        <>
+                            <img
+                                src={`data:image/jpeg;base64,${currentUser.image}`}
+                                alt={`${currentUser.name}'s avatar`}
+                                className="sidebar-profile-image"
+                            />
+                            <h3>{currentUser.name}</h3>
+                            <button className="sidebar-btn" onClick={() => {
+                                navigate('/');
+                                window.location.reload(); // Refresh the page after navigating to Home
+                            }}>
+                                <FontAwesomeIcon icon={faHome} /> Home
+                            </button>
+
+                            <button className="sidebar-btn" onClick={() => setShowAbout(true)}>
+                                <FontAwesomeIcon icon={faUser} /> About Me
+                            </button>
+
+                            <Link to="/teachernotifications" className="sidebar-btn1" style={{ textDecoration: 'none' }}>
+                                <div className="notification-container">
+                                    <FontAwesomeIcon icon={faBell} className="notification-icon" />
+                                    {notificationCount > 0 && (
+                                        <span className="notification-badge">{notificationCount}</span>
+                                    )}
+                                </div>
+                                Notifications
+                            </Link>
+
+
+                            <button className="sidebar-btn" onClick={handleLogout}>
+                                <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+                            </button>
+                        </>
+                    )}
+                </div>
+            </div>
+
+            {showAbout && currentUser && (
+                <div className="modal-backdrop" onClick={() => setShowAbout(false)}>
+                    <div className="aboutme-modal" onClick={(e) => e.stopPropagation()}>
+                        <span className="close-btn" onClick={() => setShowAbout(false)}>&times;</span>
+                        <div className="aboutme-content">
+                            <img
+                                src={`data:image/jpeg;base64,${currentUser.image}`}
+                                alt="Profile"
+                                className="profile-image"
+                            />
+                            <h2>{currentUser.name}</h2>
+                            <div className="details-container">
+                                <span className="label">Username:</span>
+                                <span className="value">{currentUser.username}</span>
+
+                                <span className="label">Email:</span>
+                                <span className="value">{currentUser.email}</span>
+
+                                <span className="label">Department:</span>
+                                <span className="value">{currentUser.department}</span>
+
+                                <span className="label">Designation:</span>
+                                <span className="value">{currentUser.designation}</span>
+
+                                <span className="label">Employee Code:</span>
+                                <span className="value">{currentUser.employeeCode}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             )}
+
+
+
+            <div className="main">
+                <button onClick={toggleSidebar} className="profile-toggle-btn">
+                    <FontAwesomeIcon icon={faBars} />
+                </button>
+                {/* Close sidebar if clicked outside */}
+                {isSidebarOpen && <div className="backdrop" onClick={toggleSidebar}></div>}
+            </div>
         </div>
     );
 }

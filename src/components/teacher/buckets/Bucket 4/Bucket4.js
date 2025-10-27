@@ -1,113 +1,100 @@
 import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Navbar from '../../Navbar';
 
 export default function Bucket4() {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-    });
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
+    // Extract the active path from the current location
+    const [activeButton, setActiveButton] = useState(location.pathname);
+
+    const handleButtonClick = (path) => {
+        setActiveButton(path);
+        navigate(path, { replace: true });
+        // window.location.reload(); 
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Perform actions with form data (e.g., send to a server)
-        console.log('Form submitted:', formData);
-    };
 
     return (
-        <>
-            <div className='bt-container'>
-                <h2 style={{ backgroundColor: '#f15b4c', color: 'white' }}>Research Form</h2>
-                <form onSubmit={handleSubmit} className='form-container'>
-                    <div className='form-group'>
-                        <label>
-                            First Name:
-                            <input
-                                type="text"
-                                name="firstName"
-                                value={formData.firstName}
-                                onChange={handleInputChange}
-                            />
-                        </label>
-                    </div>
-
-                    <div className='form-group'>
-                        <label>
-                            Last Name:
-                            <input
-                                type="text"
-                                name="lastName"
-                                value={formData.lastName}
-                                onChange={handleInputChange}
-                            />
-                        </label>
-                    </div>
-
-                    <div className='form-group'>
-                        <label>
-                            Email:
-                            <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleInputChange}
-                            />
-                        </label>
-                    </div>
-
-                    <div className='form-group'>
-                        <label>
-                            Password:
-                            <input
-                                type="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleInputChange}
-                            />
-                        </label>
-                    </div>
-
-                    <div className='form-group'>
-                        <label>
-                            Confirm Password:
-                            <input
-                                type="password"
-                                name="confirmPassword"
-                                value={formData.confirmPassword}
-                                onChange={handleInputChange}
-                            />
-                        </label>
-                    </div>
-
-                    <button type="submit" className='submit-btn'>Submit</button>
-                </form>
-            </div>
+        <div>
+            <Navbar />
             <div className="y-container">
                 <ul className="list-group">
-                    <li className="list-group-item">First item</li>
-                    <li className="list-group-item">Second item</li>
-                    <li className="list-group-item">Third item</li>
-                    <li className="list-group-item">Fourth item</li>
-                    <li className="list-group-item">Fifth item</li>
-                    <li className="list-group-item">Sixth item</li>
-                    <li className="list-group-item">Seventh item</li>
-                    <li className="list-group-item">Eighth item</li>
+                    <button
+                        className={`butt ${activeButton === "/RB/RB1" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/RB/RB1")}
+                    >
+                        RB 1
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/RB/RB2" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/RB/RB2")}
+                    >
+                        RB 2
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/RB/RB3" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/RB/RB3")}
+                    >
+                        RB 3
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/RB/RB4" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/RB/RB4")}
+                    >
+                        RB 4
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/RB/RB5" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/RB/RB5")}
+                    >
+                        RB 5
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/RB/RB6" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/RB/RB6")}
+                    >
+                        RB 6
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/RB/RB7" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/RB/RB7")}
+                    >
+                        RB 7
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/RB/RB8" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/RB/RB8")}
+                    >
+                        RB 8
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/RB/RB9" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/RB/RB9")}
+                    >
+                        RB 9
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/RB/RB10" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/RB/RB10")}
+                    >
+                        RB 10
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/RB/RB11" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/RB/RB11")}
+                    >
+                        RB 11
+                    </button>
+                    <button
+                        className={`butt ${activeButton === "/RB/RB12" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("/RB/RB12")}
+                    >
+                        RB 12
+                    </button>
                 </ul>
-                <button className="logout">
-                    <FontAwesomeIcon icon={faSignOutAlt} /> Logout
-                </button>
             </div>
-        </>
+        </div>
     );
 }

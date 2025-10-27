@@ -1,0 +1,45 @@
+.profile-toggle1-btn {
+    position: relative;
+    top: 30px;
+    margin-right: 100px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: #2c3e50;
+    cursor: pointer;
+}
+
+.notification-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    display: inline-block;
+    /* Keeps the icon and badge together */
+    margin-right: 5px;
+}
+
+.notification-icon {
+    font-size: 1.4rem;
+    /* Adjust size if needed */
+    position: relative;
+    top: 2px;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -8px;
+    /* Moves it above the bell */
+    right: -4px;
+    /* Moves it to the right */
+    background-color: red;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}

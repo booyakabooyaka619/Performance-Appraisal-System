@@ -1,0 +1,79 @@
+/* Notifications Page Styling */
+.notifications-page {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.no-notifications {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+}
+
+/* Notification Cards */
+.notification-card {
+    background: #ffffff;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-left: 6px solid #ff4d4d;
+    position: relative;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Unread Notifications */
+.notification-card.unread {
+    background: #ffecec;
+    border-left-color: #ff4d4d;
+}
+
+/* Read Notifications */
+.notification-card.read {
+    background: #e8f5e9;
+    border-left-color: #4caf50;
+}
+
+/* Hover Effect */
+.notification-card:hover {
+    background: #f0f0f0;
+    transform: scale(1.02);
+}
+
+/* Notification Title */
+.notification-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 5px;
+    /* text-align: center; */
+}
+
+/* Notification Message */
+.notification-message {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #555;
+    padding: 12px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Notification Date */
+.notification-date {
+    font-weight: bold;
+    color: #ff4d4d;
+}

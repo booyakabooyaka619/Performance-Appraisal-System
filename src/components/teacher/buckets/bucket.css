@@ -1,0 +1,57 @@
+.y-container {
+    position: fixed;
+    height: 100%;
+    width: 15%;
+    left: 0;
+    overflow-y: auto;
+    z-index: 0;
+    top: 0;
+    padding-bottom: 20px;
+    margin-left: 10px;
+    /* Add padding to the bottom */
+}
+
+.list-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* Make the buttons stack vertically */
+    top: 16%;
+    border-radius: 0;
+    bottom: 0;
+    /* Remove bottom property */
+    padding-bottom: 20px;
+    margin-left: 10px;
+
+    /* Ensure there's space at the bottom */
+}
+
+.butt {
+    width: 95%;
+    height: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.9s, color 0.3s;
+}
+
+.butt:hover {
+    background-color: #b15621;
+    color: #f0f0f0;
+}
+
+.butt.active {
+    background: linear-gradient(135deg, #38ef7d, #11998e);
+    /* Pink Gradient */
+    color: white;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+    border-radius: 15px;
+    padding: 10px 20px;
+}

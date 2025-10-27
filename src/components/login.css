@@ -2,7 +2,7 @@
 
 
 .Lform-container {
-    max-width: 400px;
+    max-width: 350px;
     margin: 100px auto;
     padding: 20px;
     background-color: white;
@@ -72,4 +72,29 @@ h2 {
     color: red;
     text-align: center;
     margin: 10px;
+}
+
+.input-icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon1 {
+    position: absolute;
+    left: 5%;
+    color: #5b6269;
+    /* Icon color */
+}
+
+.input-icon2 {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #9c9c9c;
+}
+
+.form-control {
+    padding-left: 40px;
+    /* Ensure there’s space for the icon */
 }

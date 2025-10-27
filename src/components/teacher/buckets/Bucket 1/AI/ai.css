@@ -12,6 +12,14 @@
     background-color: #f4f4f4;
 }
 
+.bt-container h2 {
+    color: white;
+    background-color: #537c78;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 .form-container {
     display: flex;
     flex-direction: column;
@@ -22,6 +30,11 @@
     margin-bottom: 25px;
 }
 
+.form-group11 {
+    width: 60%;
+    margin-bottom: 25px;
+}
+
 .label1 {
     margin-bottom: 5px;
     font-weight: bold;
@@ -29,14 +42,61 @@
     width: 100%;
 }
 
+.label2 {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+    width: auto;
+}
+
 .select-input {
-    width: 40%;
+    width: auto;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-top: 3px;
     font-size: 16px;
+    margin-left: 15px;
+}
+
+.file-input {
+    width: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-top: 3px;
+    font-size: 16px;
+    margin-left: 0px;
+}
+
+.custom-file-upload {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+.custom-file-upload:hover {
+    background-color: #0056b3;
+}
+
+.hidden-file-input {
+    display: none;
+}
+
+.file-name {
+    font-size: 14px;
+    color: #555;
+    white-space: nowrap;
+    margin-left: 10px;
 }
 
 
@@ -59,7 +119,7 @@
 .linkinput {
     position: relative;
     left: 20px;
-    width: 70%;
+    width: 30%;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -68,60 +128,405 @@
     font-size: 16px;
 }
 
-.bt-container h2 {
-    color: white;
-    background-color: #537c78;
-    text-align: center;
-    padding: 20px;
-    font-family: 'Times New Roman', Times, serif;
+
+.marks-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    /* Optional gap between items */
+    padding: 10px;
+    border: 1px solid #ccc;
+    /* Optional outer border */
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
-.vertical-compartment-box {
+.marks-item {
     display: flex;
-    /* Use flexbox to arrange compartments horizontally */
-    width: 100%;
-    /* Full width */
-    height: 40px;
-    /* Adjust height as needed */
-    border: 2px solid #000;
-    /* Border around the box */
-    margin-top: 25px;
-}
-
-.compartment {
-    border-right: 1px solid #000;
-    /* Vertical lines between compartments */
-    display: flex;
-    /* Use flexbox for compartment content */
     align-items: center;
-    /* Center content vertically */
     justify-content: center;
-    /* Center content horizontally */
+    padding: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #aaa;
+    /* Optional border for each item */
+    border-radius: 5px;
+}
+
+.marks-item-header {
+    background-color: #f3f3f3;
+    color: #5f5f5f;
+    font-weight: bold;
+}
+
+.marks-item-value {
+    background-color: #e9f7ef;
+    color: #2d6a4f;
+    font-weight: bolder;
+}
+
+
+
+.submit1-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
     font-size: 18px;
-    /* Font size */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-left: 40%;
 }
 
-/* Remove the right border from the last compartment */
-.compartment:last-child {
-    border-right: none;
+.submit1-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
 }
 
-.compartment:nth-child(2) {
-    background-color: #c0c262;
-    /* Change the background color */
+.button-container {
+    width: 100%;
+    margin-left: 40%;
 }
 
-.compartment:nth-child(4) {
-    background-color: #c0c262;
-    /* Change the background color */
+.cancel-btn {
+    background-color: #141414;
+    color: white;
+    padding: 12px 20px;
+    margin-left: 20px;
+    width: 10%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.compartment:nth-child(6) {
-    background-color: #c0c262;
-    /* Change the background color */
+.cancel-btn:hover {
+    background-color: #c9302c;
+    transform: scale(1.05);
 }
 
-.compartment:nth-child(8) {
-    background-color: #c0c262;
-    /* Change the background color */
+.newprev {
+    text-align: center;
+    background-color: #b3b7bd;
+    padding: 10px;
+    width: 30%;
+    margin: auto;
+    border-radius: 5px;
+    color: rgb(33, 59, 73);
+    font-size: 24px;
+    font-weight: bold;
+    border: 2px solid (139, 139, 139);
+    margin-bottom: 15px;
+}
+
+.submitted-forms-container {
+    max-height: 800px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.edit-delete-cont {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.submitted-form {
+    position: relative;
+    padding: 20px;
+}
+
+.submitted-form p {
+    padding-bottom: 20px;
+    font-size: medium;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.custom-submit-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-submit-btn:hover {
+    background-color: #218838;
+    /* Darker green on hover */
+}
+
+.remark-col,
+.review-col {
+    display: flex;
+    align-items: center;
+    /* Aligns text and input vertically */
+    /* justify-content: center; */
+    /* Centers horizontally */
+    gap: 10px;
+    /* Adds spacing between label and input */
+    margin-top: 10px;
+}
+
+.disabled-input {
+    width: 80%;
+    padding: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #555;
+    cursor: not-allowed;
+}
+
+.hrs-del {
+    display: flex;
+}
+
+
+.edit-btn,
+.delete-btn {
+    margin-right: 8px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.edit-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+
+.submitted-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+
+.submitted-table td {
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.submitted-table tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.submitted-table tr:nth-child(even) {
+    background-color: #fff;
+}
+
+.submitted-table td:first-child {
+    width: 30%;
+}
+
+.status-red {
+    color: red;
+}
+
+.status-green {
+    color: green;
+}
+
+.view-certificate-btn {
+    background-color: #3397a7;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.view-certificate-btn:hover {
+    background-color: #138496;
+}
+
+.input-field {
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 3px;
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+.exp-heading {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    /* Dark blue-gray */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-left: 5px solid #007bff;
+    /* Blue left border for emphasis */
+    padding-left: 10px;
+}
+
+.section-divider {
+    border: none;
+    height: 2px;
+    background-color: #ccc;
+    /* Light gray line */
+    margin: 20px 0;
+}
+
+
+.disabled-btn {
+    cursor: not-allowed !important;
+    /* 🚫 Ensure 'not-allowed' cursor */
+    opacity: 0.6;
+    /* Make button appear faded */
+    /* Completely disable interactions */
+}
+
+button:disabled {
+    cursor: not-allowed !important;
+    opacity: 0.6;
+}
+
+.edit-review-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.edit-review-btn:hover {
+    background-color: #c82333;
+    color: white;
+}
+
+.edit-review-btn[disabled],
+.edit-review-btn:disabled {
+    background-color: #c82333;
+    color: white;
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed !important;
+}
+
+
+.submit-review-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-review-btn:hover {
+    background-color: #218838;
+    /* Darker green on hover */
+}
+
+.form-control {
+    height: 50px;
+    /* Set height */
+    line-height: 50px;
+    /* Same as height to center text vertically */
+    /* Center text horizontally */
+    padding: 0 10px;
+    /* Adjust left/right padding */
+    font-size: 16px;
+    /* Adjust font size */
+}
+
+textarea {
+    resize: none;
+    overflow: hidden;
+}
+
+/* Hide the arrows for number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.score-info-button {
+    background-color: #c4ad2a;
+    /* Bootstrap info color */
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.score-info-button:hover {
+    background-color: #c4b45a;
+    transform: scale(1.03);
+}
+
+
+.custom-score-modal .modal-content {
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    /* Light background */
+    border: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.custom-score-modal .modal-header {
+    border-bottom: none;
+}
+
+.custom-score-modal .modal-title {
+    font-weight: bold;
+    display: flex;
+    margin: auto;
+    color: #343a40;
+}
+
+
+.custom-score-modal .modal-body ul {
+    padding-left: 20px;
+    color: #495057;
+}
+
+.custom-score-modal .modal-body ul ul {
+    padding-left: 15px;
+    font-size: 0.95rem;
+}
+
+.custom-score-modal .modal-body p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #38608a;
 }

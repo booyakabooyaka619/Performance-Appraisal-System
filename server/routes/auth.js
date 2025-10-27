@@ -40,7 +40,36 @@ router.post('/login', async (req, res) => {
             name: user.name,
             department: user.department,
             image: user.image, // Send the base64 image string
-            employeeCode: user.employeeCode // Send the employee code
+            employeeCode: user.employeeCode, // Send the employee code
+            email: user.email,
+            designation: user.designation,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Route to get RO details by username
+router.get('/users/ro', async (req, res) => {
+    const { username } = req.query; // Extract username from query params
+
+    try {
+        // Find RO user with the given username
+        const ro = await User.findOne({ username, role: "RO" });
+
+        if (!ro) {
+            return res.status(404).json({ message: 'RO not found' });
+        }
+
+        res.json({
+            name: ro.name,
+            username: ro.username,
+            department: ro.department,
+            image: ro.image, // Base64 image string
+            employeeCode: ro.employeeCode,
+            email: ro.email,
+            designation: ro.designation,
         });
     } catch (error) {
         console.error(error);
